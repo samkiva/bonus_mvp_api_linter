@@ -26,3 +26,4 @@ def health_check():
 def not_an_api_route():
     """This function should be ignored by the linter."""
     pass
+# This is a test change

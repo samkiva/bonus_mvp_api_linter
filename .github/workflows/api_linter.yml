@@ -1,0 +1,32 @@
+# This file tells GitHub to run our linter on every Pull Request
+
+name: API Spec Linter
+
+# 1. Define the trigger
+# This runs the job on any pull request
+on:
+  pull_request:
+
+# 2. Define the job
+jobs:
+  lint-api-spec:
+    runs-on: ubuntu-latest # Use a standard Linux runner
+
+    steps:
+      # Step 1: Check out the code from the PR
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Step 3: Run our linter!
+      - name: Run API Spec Linter
+        run: |
+          python linter.py
+          
+          # The script will exit with code 1 if it fails,
+          # which automatically fails this step.

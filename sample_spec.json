@@ -1,0 +1,53 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sample API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/user/{user_id}": {
+      "get": {
+        "summary": "Gets a user's details.",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "User details" }
+        }
+      }
+    },
+    "/user": {
+      "post": {
+        "summary": "Creates a new user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "User created" }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "A simple health check.",
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      }
+    }
+  }
+}
